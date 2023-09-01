@@ -18,3 +18,11 @@ class AddPetform(FlaskForm):
                                ('adult', 'Adult'), ('senior', 'Senior')], validators=[InputRequired(), AnyOf(values=['baby', 'young', 'adult', 'senior'])])
     notes = TextAreaField("Any pet notes", validators=[Optional()])
     available = BooleanField("Is available", default=True)
+
+
+class EditPetForm(FlaskForm):
+    """Form for editing a pet's details."""
+
+    photo_url = TextAreaField("Photo URL", validators=[Optional(), URL()])
+    notes = TextAreaField("Any pet notes", validators=[Optional()])
+    available = BooleanField("Is available", default=True)

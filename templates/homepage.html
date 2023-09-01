@@ -18,6 +18,11 @@
       {% endif %}
     </p>
   </div>
+  <form action="/{{ pet.id }}">
+    <button>
+      Edit {{ pet.name }}
+    </button>
+  </form>
 
   {% endfor %}
 
