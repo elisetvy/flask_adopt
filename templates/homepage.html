@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Pets: </h2>
+
+  {% for pet in pets %}
+
+  <div>
+    <img src="{{ pet.photo_url }}" alt="Pet Photo" width="200px">
+    <p>
+      {% if pet.available %}
+        {{ pet.name }} is available!
+      {% else %}
+        {{ pet.name }} is not available.
+      {% endif %}
+    </p>
+  </div>
+
+  {% endfor %}
+
+{% endblock %}
