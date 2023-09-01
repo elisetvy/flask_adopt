@@ -7,6 +7,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from models import db, connect_db, Pet
 
+from forms import AddPetform
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "secret"
@@ -29,3 +31,27 @@ def get_homepage():
     pets = Pet.query.all()
 
     return render_template('homepage.html', pets=pets)
+
+@app.route('/add', methods=['GET', 'POST'])
+def add_pet():
+    """Add pet form; handle adding."""
+
+    form = AddPetform()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        species = form.species.data.lower()
+        photo_url = form.photo_url.data or None
+        age = form.age.data
+        notes = form.notes.data or None
+        available = form.available.data
+
+        new_pet = Pet(name=name, species=species, photo_url=photo_url, age=age, notes=notes, available=available)
+
+        db.session.add(new_pet)
+        db.session.commit()
+
+        return redirect('/')
+
+    else:
+        return render_template("add_pet_form.html", form=form)

@@ -39,7 +39,7 @@ class Pet(db.Model):
     photo_url = db.Column(
         db.Text,
         nullable=False,
-        default=""
+        default="https://brevardzoo.org/wp-content/uploads/2020/11/Shelley-1.jpg"
     )
 
     age = db.Column(
