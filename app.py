@@ -73,7 +73,7 @@ def edit_pet_details(pet_id):
         pet.available = form.available.data
 
         db.session.commit()
-
+        #TODO: could add a flash
         return redirect(f'/{pet_id}')
     else:
         return render_template('pet_details.html', form=form, pet=pet)

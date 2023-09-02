@@ -15,7 +15,9 @@ class AddPetform(FlaskForm):
     photo_url = TextAreaField("Photo URL", validators=[Optional(), URL()])
     age = SelectField('Pet Age',
                       choices=[('baby', 'Baby'), ('young', 'Young'),
-                               ('adult', 'Adult'), ('senior', 'Senior')], validators=[InputRequired(), AnyOf(values=['baby', 'young', 'adult', 'senior'])])
+                               ('adult', 'Adult'), ('senior', 'Senior')],
+                               validators=[InputRequired(),
+                                AnyOf(values=['baby', 'young', 'adult', 'senior'])])
     notes = TextAreaField("Any pet notes", validators=[Optional()])
     available = BooleanField("Is available", default=True)
 
